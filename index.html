@@ -7,6 +7,7 @@
     <title>Paya Street Coffee | Your Local Coffee Shop</title>
     <link rel="icon" href="assets/android-chrome-512x512.png" type="image/x-icon">
 </head>
+
 <style>
 
     @font-face {
@@ -94,9 +95,10 @@
 
     <div class="container">
         <div class="video-wrapper">
-            <video class="responsive-video" autoplay loop muted playsinline>
-                <source src="assets/slot-machine.webm" type="video/webm">
-                Your browser does not support the video tag.
+            <video id="slot-machine" class="responsive-video" autoplay loop muted playsinline>
+                <source src="assets/slot-machine.webm" type="video/webm"> <!-- For browsers that support WebM -->
+                <source src="assets/slot-machine.mp4" type="video/mp4"> <!-- For Safari with HEVC support -->
+                <img src="assets/slot-machine.gif" alt="Fallback image for unsupported browsers">
             </video>
         </div>
         <div class="text-below">
@@ -105,4 +107,14 @@
     </div>
 
 </body>
+<script>
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isSafari) {
+        document.getElementById('slot-machine').src = 'assets/slot-machine.mp4'; // HEVC .mp4 for Safari
+    } else {
+        document.getElementById('slot-machine').src = 'assets/slot-machine.webm';
+    }
+
+</script>
 </html>
