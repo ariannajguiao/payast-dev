@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Paya Street Coffee | Your Local Coffee Shop</title>
+    <link rel="icon" href="assets/android-chrome-512x512.png" type="image/x-icon">
+</head>
+<style>
+
+    @font-face {
+        font-family: 'Satoshi';
+        src: url('fonts/Satoshi-Medium.eot');
+        src: local('fonts/Satoshi Medium'), local('fonts/Satoshi-Medium'),
+            url('fonts/Satoshi-Medium.eot?#iefix') format('embedded-opentype'),
+            url('fonts/Satoshi-Medium.woff2') format('woff2'),
+            url('fonts/Satoshi-Medium.woff') format('woff'),
+            url('fonts/Satoshi-Medium.ttf') format('truetype'),
+            url('fonts/Satoshi-Medium.svg#Satoshi-Medium') format('svg');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        background-color: #015657; /* Background color behind the transparent video */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+    }
+
+    .video-wrapper {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-height: 80vh;
+    }
+
+    .responsive-video {
+        width: 100%;
+        height: auto;
+        max-height:50%;
+    }
+
+    .text-below {
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .text-below h1 {
+        color: #ddf0dd;
+        width: 45%;
+        margin: 0 auto;
+        font-size: 26px;
+        line-height: 1.4;
+    }
+
+    @media all and (max-width: 767px) {
+        .video-wrapper {
+            max-height: 70vh;
+        }
+
+        .responsive-video {
+            max-height: 40%;
+        }
+
+        .text-below h1 {
+            font-size: 18px;
+            width: 80%;
+        }
+    }
+
+
+</style>
+<body>
+
+    <div class="container">
+        <div class="video-wrapper">
+            <video class="responsive-video" autoplay loop muted playsinline>
+                <source src="assets/slot-machine.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="text-below">
+            <h1>YOUR LOCAL COFFEE SHOPS ABOUT TO GET BETTER</h1>
+        </div>
+    </div>
+
+</body>
+</html>
