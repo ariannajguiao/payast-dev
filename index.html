@@ -55,11 +55,12 @@
 
         .slottt-machine-recipe__item {
             width: 100%;
-            height: 100%;
+            height: 400px; /* Set this to match the .slottt-machine-recipe__mask height */
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
 
         h1 {
             color: white;
@@ -77,6 +78,10 @@
                 height: 300px; /* Reduce height for medium screens */
             }
 
+            .slottt-machine-recipe__item {
+                height: 300px; /* Match the .slottt-machine-recipe__mask height */
+            }
+
             h1 {
                 font-size: 18px; /* Adjust font size for smaller screens */
                 width: 80%;
@@ -84,15 +89,20 @@
         }
 
         @media (max-width: 400px) {
-            h1 {
-                font-size: 16px; /* Further reduce font size for very small screens */
-                width: 90%;
-            }
-
             .slottt-machine-recipe__mask {
                 height: 200px; /* Further reduce height */
             }
+
+            .slottt-machine-recipe__item {
+                height: 200px; /* Match the .slottt-machine-recipe__mask height */
+            }
+
+            h1 {
+                font-size: 16px; /* Further reduce font size */
+                width: 90%;
+            }
         }
+
     </style>
 </head>
 <body>
@@ -116,10 +126,6 @@
         'assets/lottie/Hot.json',
         'assets/lottie/Iced.json',
         'assets/lottie/Kwasong.json',
-        'assets/lottie/Logo Mark.json',
-        'assets/lottie/Iced.json',
-        'assets/lottie/Kwasong.json',
-        'assets/lottie/Hot.json',
         'assets/lottie/Logo Mark.json',
     ];
 
@@ -167,17 +173,20 @@
         currentIndex = (currentIndex + 1) % lottieList.length;
 
         // Calculate the final stop position
-        var stopPosition = -currentIndex * $('.slottt-machine-recipe__mask').height();
+        var itemHeight = $('.slottt-machine-recipe__item').height();
+        var stopPosition = -currentIndex * itemHeight;
 
         // Perform the full spins
-        $wordbox.animate({ top: -(lottieList.length * totalSpins) * $('.slottt-machine-recipe__mask').height() }, totalDuration, 'easeInOutCubic', function () {
+        $wordbox.animate({ top: -(lottieList.length * totalSpins) * itemHeight }, totalDuration, 'easeInOutCubic', function () {
             // After full spins, stop at the desired position
             $wordbox.animate({ top: stopPosition }, 1200, 'easeInOutCubic');
         });
     }
 
+
     $(function () {
         $wordbox = $('#wordbox .slottt-machine-recipe__items_container');
+        buildSlotContents($wordbox, lottieList);
         buildSlotContents($wordbox, lottieList);
         buildSlotContents($wordbox, lottieList);
         buildSlotContents($wordbox, lottieList);
